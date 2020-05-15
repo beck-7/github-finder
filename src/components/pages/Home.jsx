@@ -1,5 +1,5 @@
 import React from "react";
-import Search from "../users/Search";
+import Search from "../layout/Search";
 import { Container } from "@material-ui/core";
 
 const Home = () => (

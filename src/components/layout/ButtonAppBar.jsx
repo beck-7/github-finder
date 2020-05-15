@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Button,
   IconButton,
@@ -45,13 +46,19 @@ const ButtonAppBar = () => {
       </IconButton>
       <Menu open={open} anchorEl={anchorEl} onClose={handleClose} keepMounted>
         <MenuItem onClose={handleClose}>
-          <Button className={classes.buttonText}>Home</Button>
+          <Link to="/" className={classes.link} onClose={handleClose}>
+            <Button className={classes.buttonText}>Home</Button>
+          </Link>
         </MenuItem>
         <MenuItem onClose={handleClose}>
-          <Button className={classes.buttonText}>About</Button>
+          <Link to="/about" className={classes.link}>
+            <Button className={classes.buttonText}>About</Button>
+          </Link>
         </MenuItem>
         <MenuItem onClose={handleClose}>
-          <Button className={classes.buttonText}>Sign In</Button>
+          <Link to="#" className={classes.link}>
+            <Button className={classes.buttonText}>Sign In</Button>
+          </Link>
         </MenuItem>
       </Menu>
     </div>

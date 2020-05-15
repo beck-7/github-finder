@@ -8,6 +8,7 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import { Link } from "react-router-dom";
 import ButtonAppBar from "./ButtonAppBar";
 
 const useStyles = makeStyles((theme) => ({
@@ -48,18 +49,28 @@ const Navbar = () => {
     <div className={classes.root}>
       <AppBar position="fixed">
         <Toolbar className={classes.toolbar}>
-          <IconButton edge="start" color="inherit" aria-label="menu">
-            <GitHubIcon />
-          </IconButton>
-          <Typography variant="h5" className={classes.title} tabIndex="-1">
+          <Link to="/" className={classes.link} tabIndex="-1">
             <IconButton edge="start" color="inherit" aria-label="menu">
-              Github Finder
+              <GitHubIcon />
             </IconButton>
+          </Link>
+          <Typography variant="h5" className={classes.title}>
+            <Link to="/" className={classes.link} tabIndex="-1">
+              <IconButton edge="start" color="inherit" aria-label="menu">
+                Github Finder
+              </IconButton>
+            </Link>
           </Typography>
           <div className={classes.nav}>
-            <Button className={classes.buttonText}>Home</Button>
-            <Button className={classes.buttonText}>About</Button>
-            <Button className={classes.buttonText}>Sign In</Button>
+            <Link to="/" className={classes.link} tabIndex="-1">
+              <Button className={classes.buttonText}>Home</Button>
+            </Link>
+            <Link to="/about" className={classes.link} tabIndex="-1">
+              <Button className={classes.buttonText}>About</Button>
+            </Link>
+            <Link to="#" className={classes.link} tabIndex="-1">
+              <Button className={classes.buttonText}>Sign In</Button>
+            </Link>
           </div>
           <ButtonAppBar />
         </Toolbar>
