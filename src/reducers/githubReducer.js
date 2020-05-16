@@ -1,0 +1,31 @@
+import { SEARCH_USERS, CLEAR_USERS, GET_USER } from "../actions/types";
+
+const initState = {
+  users: [],
+  user: {},
+};
+
+export default (state = initState, action) => {
+  switch (action.type) {
+    case SEARCH_USERS:
+      return {
+        ...state,
+        users: action.payload,
+        loading: false,
+      };
+    case GET_USER:
+      return {
+        ...state,
+        user: action.payload,
+        loading: false,
+      };
+    case CLEAR_USERS:
+      return {
+        ...state,
+        users: [],
+        loading: false,
+      };
+    default:
+      return state;
+  }
+};

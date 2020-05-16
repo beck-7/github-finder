@@ -1,14 +1,28 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { TextField, Button, makeStyles } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { searchUsers, clearUsers } from "../../actions/githubActions";
 
 const Search = () => {
   const [text, setText] = useState("");
+  const dispatch = useDispatch();
+
+  const users = useSelector((state) => state.gh.users);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(searchUsers(text));
+    setText("");
+  };
 
   const onChange = (e) => setText(e.target.value);
 
+  const handleClear = () => dispatch(clearUsers());
+
   const useStyles = makeStyles(() => ({
     input: {
-      margin: "10px 0 20px 0",
+      margin: "0 0 20px 0",
     },
     searchBtn: {
       backgroundColor: "#333",
@@ -24,9 +38,9 @@ const Search = () => {
 
   return (
     <>
-      <form autoComplete="off">
+      <form onSubmit={onSubmit} autoComplete="off">
         <TextField
-          label="Search Users..."
+          label="Search..."
           fullWidth={true}
           onChange={onChange}
           value={text}
@@ -41,9 +55,16 @@ const Search = () => {
           Search
         </Button>
       </form>
-      <Button variant="contained" fullWidth={true} color="secondary">
-        Clear
-      </Button>
+      {users.length > 0 && (
+        <Button
+          onClick={handleClear}
+          variant="contained"
+          fullWidth={true}
+          color="secondary"
+        >
+          Clear
+        </Button>
+      )}
     </>
   );
 };
