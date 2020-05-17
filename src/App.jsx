@@ -7,6 +7,7 @@ import Navbar from "./components/layout/Navbar";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import NotFound from "./components/pages/NotFound";
+import Alert from "./components/layout/Alert";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Router>
         <CssBaseline>
           <Navbar />
+          <Alert />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />

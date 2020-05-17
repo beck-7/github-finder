@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { TextField, Button, makeStyles } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { searchUsers, clearUsers } from "../../actions/githubActions";
+import { setAlert } from "../../actions/alertActions";
 
 const Search = () => {
   const [text, setText] = useState("");
@@ -12,8 +13,12 @@ const Search = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(searchUsers(text));
-    setText("");
+    if (text === "") {
+      dispatch(setAlert("Please enter something"));
+    } else {
+      dispatch(searchUsers(text));
+      setText("");
+    }
   };
 
   const onChange = (e) => setText(e.target.value);
