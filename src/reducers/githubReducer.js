@@ -1,8 +1,15 @@
-import { SEARCH_USERS, CLEAR_USERS, GET_USER } from "../actions/types";
+import {
+  SEARCH_USERS,
+  CLEAR_USERS,
+  GET_USER,
+  SET_LOADING,
+} from "../actions/types";
 
 const initState = {
   users: [],
   user: {},
+  repos: [],
+  loading: false,
 };
 
 export default (state = initState, action) => {
@@ -24,6 +31,11 @@ export default (state = initState, action) => {
         ...state,
         users: [],
         loading: false,
+      };
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;
