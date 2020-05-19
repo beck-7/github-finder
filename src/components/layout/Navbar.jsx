@@ -68,9 +68,6 @@ const Navbar = () => {
             <Link to="/about" className={classes.link} tabIndex="-1">
               <Button className={classes.buttonText}>About</Button>
             </Link>
-            <Link to="#" className={classes.link} tabIndex="-1">
-              <Button className={classes.buttonText}>Sign In</Button>
-            </Link>
           </div>
           <ButtonAppBar />
         </Toolbar>

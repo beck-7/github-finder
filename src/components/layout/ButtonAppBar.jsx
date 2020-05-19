@@ -55,11 +55,6 @@ const ButtonAppBar = () => {
             <Button className={classes.buttonText}>About</Button>
           </Link>
         </MenuItem>
-        <MenuItem onClose={handleClose}>
-          <Link to="#" className={classes.link}>
-            <Button className={classes.buttonText}>Sign In</Button>
-          </Link>
-        </MenuItem>
       </Menu>
     </div>
   );

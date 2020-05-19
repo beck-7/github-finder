@@ -8,7 +8,7 @@ import {
 const initState = {
   users: [],
   user: {},
-  repos: [],
+  userRepos: [],
   loading: false,
 };
 
