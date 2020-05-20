@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Typography, Box, Tabs, Tab } from "@material-ui/core";
 import Users from "../users/Users";
+import Repos from "../repos/Repos";
 
 const SearchTabs = () => {
   const [value, setValue] = useState(0);
@@ -34,7 +35,7 @@ const SearchTabs = () => {
         <Users />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Repos
+        <Repos />
       </TabPanel>
     </>
   );

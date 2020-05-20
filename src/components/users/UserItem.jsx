@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 auto",
     textAlign: "center",
     paddingTop: 15,
+    textDecoration: "none",
   },
 }));
 
