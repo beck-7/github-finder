@@ -15,6 +15,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Chip,
   makeStyles,
 } from "@material-ui/core";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
@@ -39,18 +40,35 @@ const useStyles = makeStyles((theme) => ({
     display: "inline-flex",
     alignItems: "center",
     marginLeft: 10,
+    "&>*": {
+      marginRight: 5,
+    },
   },
-  card1: {
-    margin: "20px auto 0 auto",
-    padding: " 25px 10% 10px 10%",
+  card: {
+    margin: "20px auto",
+    padding: " 20px 5%",
+  },
+  cardBadge: {
+    margin: "20px auto",
+    padding: " 20px 5%",
+    textAlign: "center",
+    "& >*": {
+      margin: theme.spacing(1),
+    },
   },
   cardMedia: {
-    height: 170,
-    width: 170,
+    height: 160,
+    width: 160,
     borderRadius: "50%",
   },
   listItem: {
     padding: 0,
+  },
+  bio: {
+    marginTop: 10,
+  },
+  checkIcon: {
+    color: "#28a745",
   },
   fwBold: {
     fontWeight: "bold",
@@ -86,7 +104,7 @@ const User = ({ match }) => {
 
   if (loading) return <Spinner />;
   return (
-    <Container maxWidth="md">
+    <Container>
       <div className={classes.root}>
         <RouterLink to="/" className={classes.link} tabIndex={-1}>
           <Button
@@ -102,12 +120,16 @@ const User = ({ match }) => {
           display="inline"
           className={classes.hire}
         >
-          <span style={{ marginRight: 5 }}>Hirable:</span>
-          {hireable ? <CheckCircleIcon /> : <CancelIcon color="secondary" />}
+          <span>Hirable:</span>
+          {hireable ? (
+            <CheckCircleIcon className={classes.checkIcon} />
+          ) : (
+            <CancelIcon color="secondary" />
+          )}
         </Typography>
-        <Card className={classes.card1}>
-          <Grid container spacing={0}>
-            <Grid item xs={12} sm={6} lg={6} xl={6}>
+        <Card className={classes.card}>
+          <Grid container spacing={0} justify="center" alignItems="center">
+            <Grid item xs={12} sm={6} lg={6} xl={6} align="center">
               <CardMedia
                 component="img"
                 image={avatar_url}
@@ -124,12 +146,12 @@ const User = ({ match }) => {
             </Grid>
             <Grid item xs={12} sm={6} lg={6} xl={6}>
               {bio && (
-                <>
+                <div className={classes.bio}>
                   <Typography variant="h5">
                     <span className={classes.fwBold}>Bio</span>
                   </Typography>
                   <Typography variant="subtitle1">{bio}</Typography>
-                </>
+                </div>
               )}
               <CardActions style={{ paddingLeft: 0 }}>
                 <Link href={html_url} target="_blank" rel="noreferrer">
@@ -173,6 +195,12 @@ const User = ({ match }) => {
               </List>
             </Grid>
           </Grid>
+        </Card>
+        <Card className={classes.cardBadge}>
+          <Chip label={`Followers: ${followers}`} color="secondary" />
+          <Chip label={`Following: ${following}`} color="primary" />
+          <Chip label={`Public Repos: ${public_repos}`} />
+          <Chip label={`Public Gists: ${public_gists}`} color="secondary" />
         </Card>
       </div>
     </Container>
