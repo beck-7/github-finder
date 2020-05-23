@@ -3,25 +3,24 @@ import { useSelector } from "react-redux";
 import { Alert as MuiAlert } from "@material-ui/lab";
 import { Container, makeStyles } from "@material-ui/core";
 
-const Alert = () => {
-  const useStyles = makeStyles(() => ({
-    alert: {
-      marginTop: 30,
-    },
-  }));
+export const Alert = () => {
   const classes = useStyles();
 
   const alert = useSelector((state) => state.alert);
 
+  if (alert === null) return null;
+
   return (
-    alert !== null && (
-      <Container maxWidth="md">
-        <MuiAlert severity="error" className={classes.alert}>
-          {alert.msg}
-        </MuiAlert>
-      </Container>
-    )
+    <Container maxWidth="md">
+      <MuiAlert severity="error" className={classes.alert}>
+        {alert.msg}
+      </MuiAlert>
+    </Container>
   );
 };
 
-export default Alert;
+const useStyles = makeStyles(() => ({
+  alert: {
+    marginTop: 30,
+  },
+}));

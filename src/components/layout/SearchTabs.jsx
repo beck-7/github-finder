@@ -1,21 +1,15 @@
 import React, { useState } from "react";
 import { Typography, Box, Tabs, Tab } from "@material-ui/core";
-import Users from "../users/Users";
-import Repos from "../repos/Repos";
 
-const SearchTabs = () => {
+import { Users } from "../users/Users";
+import { Repos } from "../repos/Repos";
+
+export const SearchTabs = () => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  function a11yProps(index) {
-    return {
-      id: `scrollable-auto-tab-${index}`,
-      "aria-controls": `scrollable-auto-tabpanel-${index}`,
-    };
-  }
 
   return (
     <>
@@ -41,16 +35,16 @@ const SearchTabs = () => {
   );
 };
 
-function TabPanel(props) {
+const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
 
   return (
     <div
+      {...other}
       role="tabpanel"
       hidden={value !== index}
       id={`scrollable-auto-tabpanel-${index}`}
       aria-labelledby={`scrollable-auto-tab-${index}`}
-      {...other}
     >
       {value === index && (
         <Box p={3}>
@@ -59,6 +53,11 @@ function TabPanel(props) {
       )}
     </div>
   );
-}
+};
 
-export default SearchTabs;
+const a11yProps = (index) => {
+  return {
+    id: `scrollable-auto-tab-${index}`,
+    "aria-controls": `scrollable-auto-tabpanel-${index}`,
+  };
+};

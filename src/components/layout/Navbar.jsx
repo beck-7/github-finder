@@ -7,42 +7,12 @@ import {
   IconButton,
   makeStyles,
 } from "@material-ui/core";
-import GitHubIcon from "@material-ui/icons/GitHub";
 import { Link } from "react-router-dom";
-import ButtonAppBar from "./ButtonAppBar";
+import GitHubIcon from "@material-ui/icons/GitHub";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    marginBottom: 100,
-  },
-  title: {
-    flexGrow: 1,
-    fontWeight: "bold",
-  },
-  toolbar: {
-    minHeight: 75,
-    margin: "0 25px",
-    [theme.breakpoints.down("xs")]: {
-      margin: 0,
-    },
-  },
-  buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
-  },
-  link: {
-    textDecoration: "none",
-    color: "#fff",
-  },
-  nav: {
-    [theme.breakpoints.down("xs")]: {
-      display: "none",
-    },
-  },
-}));
+import { ButtonAppBar } from "./ButtonAppBar";
 
-const Navbar = () => {
+export const Navbar = () => {
   const classes = useStyles();
 
   return (
@@ -76,4 +46,33 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    marginBottom: 100,
+  },
+  toolbar: {
+    minHeight: 75,
+    margin: "0 25px",
+    [theme.breakpoints.down("xs")]: {
+      margin: 0,
+    },
+  },
+  nav: {
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
+    },
+  },
+  title: {
+    flexGrow: 1,
+    fontWeight: "bold",
+  },
+  buttonText: {
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  link: {
+    textDecoration: "none",
+    color: "#fff",
+  },
+}));

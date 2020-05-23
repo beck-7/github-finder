@@ -9,24 +9,7 @@ import {
 } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    [theme.breakpoints.up("sm")]: {
-      display: "none",
-    },
-    boxShadow: "none",
-  },
-  link: {
-    textDecoration: "none",
-    color: "#fff",
-  },
-  buttonText: {
-    color: "#000",
-    fontWeight: "normal",
-  },
-}));
-
-const ButtonAppBar = () => {
+export const ButtonAppBar = () => {
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -39,6 +22,7 @@ const ButtonAppBar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <div className={classes.root}>
       <IconButton onClick={handleClick}>
@@ -60,4 +44,19 @@ const ButtonAppBar = () => {
   );
 };
 
-export default ButtonAppBar;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    [theme.breakpoints.up("sm")]: {
+      display: "none",
+    },
+    boxShadow: "none",
+  },
+  link: {
+    textDecoration: "none",
+    color: "#fff",
+  },
+  buttonText: {
+    color: "#000",
+    fontWeight: "normal",
+  },
+}));

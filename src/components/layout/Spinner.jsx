@@ -1,16 +1,12 @@
 import React from "react";
 import spinner from "../../assets/spinner.gif";
 
-const Spinner = () => {
-  return (
-    <>
-      <img
-        src={spinner}
-        alt="Loading..."
-        style={{ width: "200px", margin: "auto", display: "block" }}
-      />
-    </>
-  );
+export const Spinner = () => {
+  return <img src={spinner} alt="Loading indicator" style={spinnerStyle} />;
 };
 
-export default Spinner;
+const spinnerStyle = {
+  width: "200px",
+  margin: "auto",
+  display: "block",
+};

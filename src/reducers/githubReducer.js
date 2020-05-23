@@ -4,13 +4,14 @@ import {
   CLEAR_USERS,
   CLEAR_REPOS,
   GET_USER,
+  GET_USER_REPOS,
   SET_LOADING,
 } from "../actions/types";
 
 const initState = {
   users: [],
-  user: {},
   repos: [],
+  user: {},
   userRepos: [],
   loading: false,
 };
@@ -33,6 +34,12 @@ export default (state = initState, action) => {
       return {
         ...state,
         user: action.payload,
+        loading: false,
+      };
+    case GET_USER_REPOS:
+      return {
+        ...state,
+        userRepos: action.payload,
         loading: false,
       };
     case CLEAR_USERS:

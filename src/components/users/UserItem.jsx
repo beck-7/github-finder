@@ -10,36 +10,20 @@ import {
   makeStyles,
 } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(2),
-  },
-  cardMedia: {
-    height: 70,
-    width: 70,
-    borderRadius: "50%",
-    margin: "0 auto",
-  },
-  cardContent: {
-    margin: "0 auto",
-    textAlign: "center",
-    paddingTop: 15,
-    textDecoration: "none",
-  },
-}));
-
-const UserItem = (props) => {
+export const UserItem = ({ user }) => {
   const classes = useStyles();
-  const { login, avatar_url } = props.user;
+
+  const { login, avatar_url } = user;
+
   return (
     <div className={classes.root}>
-      <Card className={classes.cardContent}>
+      <Card className={classes.card}>
         <CardMedia image={avatar_url} className={classes.cardMedia} />
-        <CardContent style={{ paddingBottom: 0 }}>
+        <CardContent className={classes.cardContent}>
           <Typography variant="h5">{login}</Typography>
         </CardContent>
-        <CardActions style={{ paddingTop: 0 }}>
-          <Link to={`/user/${login}`} className={classes.cardContent}>
+        <CardActions className={classes.cardActions}>
+          <Link to={`/user/${login}`} className={classes.card}>
             <Button size="small" color="primary" variant="contained">
               More
             </Button>
@@ -50,4 +34,26 @@ const UserItem = (props) => {
   );
 };
 
-export default UserItem;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: theme.spacing(2),
+  },
+  card: {
+    margin: "0 auto",
+    textAlign: "center",
+    paddingTop: 15,
+    textDecoration: "none",
+  },
+  cardMedia: {
+    height: 70,
+    width: 70,
+    borderRadius: "50%",
+    margin: "0 auto",
+  },
+  cardContent: {
+    paddingBottom: 0,
+  },
+  cardActions: {
+    paddingTop: 0,
+  },
+}));

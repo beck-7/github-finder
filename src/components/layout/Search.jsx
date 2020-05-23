@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { TextField, Button, makeStyles } from "@material-ui/core";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { Grid, TextField, Button, makeStyles } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
 import {
   searchUsers,
   searchRepos,
@@ -10,7 +10,7 @@ import {
 } from "../../actions/githubActions";
 import { setAlert } from "../../actions/alertActions";
 
-const Search = () => {
+export const Search = () => {
   const [text, setText] = useState("");
   const dispatch = useDispatch();
 
@@ -19,12 +19,11 @@ const Search = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (text === "") {
-      dispatch(setAlert("Please enter something"));
-    } else {
-      dispatch(searchUsers(text));
-      dispatch(searchRepos(text));
-      setText("");
+      return dispatch(setAlert("Please enter something"));
     }
+    dispatch(searchUsers(text));
+    dispatch(searchRepos(text));
+    setText("");
   };
 
   const onChange = (e) => setText(e.target.value);
@@ -34,53 +33,55 @@ const Search = () => {
     dispatch(clearRepos(text));
   };
 
-  const useStyles = makeStyles(() => ({
-    input: {
-      margin: "0 0 20px 0",
-    },
-    searchBtn: {
-      backgroundColor: "#333",
-      color: "#fff",
-      marginBottom: 10,
-      "&:hover": {
-        backgroundColor: "#484848",
-      },
-    },
-  }));
-
   const classes = useStyles();
 
   return (
-    <>
-      <form onSubmit={onSubmit} autoComplete="off">
-        <TextField
-          label="Search..."
-          fullWidth={true}
-          onChange={onChange}
-          value={text}
-          className={classes.input}
-        />
-        <Button
-          type="submit"
-          variant="contained"
-          fullWidth={true}
-          className={classes.searchBtn}
-        >
-          Search
-        </Button>
-      </form>
+    <form onSubmit={onSubmit} autoComplete="off">
+      <Grid container spacing={1} alignItems="center">
+        <Grid item xs={9} sm={11} lg={11} xl={11}>
+          <TextField
+            label="Search..."
+            fullWidth={true}
+            onChange={onChange}
+            value={text}
+            className={classes.input}
+          />
+        </Grid>
+        <Grid item xs={3} sm={1} lg={1} xl={1}>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth={true}
+            className={classes.searchBtn}
+          >
+            <SearchIcon />
+          </Button>
+        </Grid>
+      </Grid>
       {users.length > 0 && (
         <Button
           onClick={handleClear}
-          variant="contained"
-          fullWidth={true}
           color="secondary"
+          className={classes.clearBtn}
         >
           Clear
         </Button>
       )}
-    </>
+    </form>
   );
 };
 
-export default Search;
+const useStyles = makeStyles(() => ({
+  input: {
+    margin: "0 0 20px 0",
+  },
+  searchBtn: {
+    color: "#fff",
+    marginBottom: 10,
+  },
+  clearBtn: {
+    float: "right",
+    marginTop: 6,
+  },
+}));

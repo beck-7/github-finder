@@ -1,20 +1,22 @@
 import React from "react";
-import "./App.css";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Navbar from "./components/layout/Navbar";
-import Home from "./components/pages/Home";
-import User from "./components/users/User";
-import About from "./components/pages/About";
-import NotFound from "./components/pages/NotFound";
-import Alert from "./components/layout/Alert";
+
+import { Alert } from "./components/layout/Alert";
+import { Navbar } from "./components/layout/Navbar";
+import { Home } from "./pages/Home";
+import { User } from "./pages/User";
+import { About } from "./pages/About";
+import { NotFound } from "./pages/NotFound";
+
+import "./App.css";
 
 const App = () => {
   return (
     <MuiThemeProvider>
-      <Router>
-        <CssBaseline>
+      <CssBaseline>
+        <Router>
           <Navbar />
           <Alert />
           <Switch>
@@ -23,8 +25,8 @@ const App = () => {
             <Route path="/user/:login" component={User} />
             <Route component={NotFound} />
           </Switch>
-        </CssBaseline>
-      </Router>
+        </Router>
+      </CssBaseline>
     </MuiThemeProvider>
   );
 };

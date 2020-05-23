@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "@material-ui/core";
 
-const NotFound = () => {
+export const NotFound = () => {
   return (
     <Container maxWidth="md">
       <h1>Not Found</h1>
@@ -9,5 +9,3 @@ const NotFound = () => {
     </Container>
   );
 };
-
-export default NotFound;

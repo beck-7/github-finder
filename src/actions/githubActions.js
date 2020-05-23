@@ -4,10 +4,10 @@ import {
   CLEAR_USERS,
   CLEAR_REPOS,
   GET_USER,
+  GET_USER_REPOS,
   SET_LOADING,
 } from "./types";
 
-// Search Users
 export const searchUsers = (text) => async (dispatch) => {
   dispatch(setLoading());
   const res = await fetch(
@@ -20,7 +20,6 @@ export const searchUsers = (text) => async (dispatch) => {
   });
 };
 
-// Search Repos
 export const searchRepos = (text) => async (dispatch) => {
   dispatch(setLoading());
   const res = await fetch(
@@ -33,7 +32,6 @@ export const searchRepos = (text) => async (dispatch) => {
   });
 };
 
-// Get User
 export const getUser = (username) => async (dispatch) => {
   dispatch(setLoading());
   const res = await fetch(
@@ -46,11 +44,21 @@ export const getUser = (username) => async (dispatch) => {
   });
 };
 
-// Clear Users
+export const getUserRepos = (username) => async (dispatch) => {
+  dispatch(setLoading());
+
+  const res = await fetch(
+    `https://api.github.com/users/${username}/repos?per_page=&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+  );
+  const data = await res.json();
+  dispatch({
+    type: GET_USER_REPOS,
+    payload: data,
+  });
+};
+
 export const clearUsers = () => ({ type: CLEAR_USERS });
 
-// Clear Repos
 export const clearRepos = () => ({ type: CLEAR_REPOS });
 
-// Set Loading
 export const setLoading = () => ({ type: SET_LOADING });

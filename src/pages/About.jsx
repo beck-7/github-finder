@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "@material-ui/core";
 
-const About = () => {
+export const About = () => {
   return (
     <Container maxWidth="md">
       <h1>About this App</h1>
@@ -9,5 +9,3 @@ const About = () => {
     </Container>
   );
 };
-
-export default About;
