@@ -43,16 +43,16 @@ export const User = ({ match }) => {
   const {
     name,
     company,
-    avatar_url,
+    avatar_url: avatarUrl,
     location,
     bio,
     blog,
     login,
-    html_url,
+    html_url: htmlUrl,
     followers,
     following,
-    public_repos,
-    public_gists,
+    public_repos: publicRepos,
+    public_gists: publicGists,
     hireable,
   } = user;
 
@@ -87,7 +87,7 @@ export const User = ({ match }) => {
             <Grid item xs={12} sm={6} lg={6} xl={6} align="center">
               <CardMedia
                 component="img"
-                image={avatar_url}
+                image={avatarUrl}
                 className={classes.cardMedia}
               />
               <CardContent className={classes.cardContent}>
@@ -110,7 +110,7 @@ export const User = ({ match }) => {
               )}
               <CardActions className={classes.cardActions}>
                 <Link
-                  href={html_url}
+                  href={htmlUrl}
                   target="_blank"
                   rel="noreferrer noopener"
                   tabIndex={-1}
@@ -163,8 +163,8 @@ export const User = ({ match }) => {
         <Card className={classes.cardBadge}>
           <Chip label={`Followers: ${followers}`} color="secondary" />
           <Chip label={`Following: ${following}`} color="primary" />
-          <Chip label={`Public Repos: ${public_repos}`} />
-          <Chip label={`Public Gists: ${public_gists}`} color="secondary" />
+          <Chip label={`Public Repos: ${publicRepos}`} />
+          <Chip label={`Public Gists: ${publicGists}`} color="secondary" />
         </Card>
         <UserRepos userRepos={userRepos} />
       </div>

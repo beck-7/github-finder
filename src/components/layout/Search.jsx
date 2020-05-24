@@ -14,7 +14,10 @@ export const Search = () => {
   const [text, setText] = useState("");
   const dispatch = useDispatch();
 
-  const users = useSelector((state) => state.gh.users);
+  const [users, repos] = useSelector((state) => [
+    state.gh.users,
+    state.gh.repos,
+  ]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -59,7 +62,7 @@ export const Search = () => {
           </Button>
         </Grid>
       </Grid>
-      {users.length > 0 && (
+      {(users.length > 0 || repos.length > 0) && (
         <Button
           onClick={handleClear}
           color="secondary"

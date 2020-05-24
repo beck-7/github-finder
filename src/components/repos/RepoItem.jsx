@@ -13,29 +13,35 @@ import StarRateIcon from "@material-ui/icons/StarRate";
 export const RepoItem = ({ repo }) => {
   const classes = useStyles();
 
-  const { full_name, html_url, language, stargazers_count } = repo;
+  const {
+    full_name: fullName,
+    html_url: htmlUrl,
+    language,
+    stargazers_count: stargazersCount,
+  } = repo;
 
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
         <CardContent className={classes.cardContent}>
           <Typography color="primary" variant="h5">
-            {full_name}
+            {fullName}
           </Typography>
           <Typography variant="subtitle1">{language}</Typography>
-          {stargazers_count > 0 && (
+          {stargazersCount > 0 && (
             <Typography variant="body2" className={classes.starsCount}>
-              {starsCount(stargazers_count)}
+              {starsCount(stargazersCount)}
               <StarRateIcon color="secondary" />
             </Typography>
           )}
         </CardContent>
         <CardActions className={classes.cardActions}>
           <Link
-            href={html_url}
+            href={htmlUrl}
             target="_blank"
             rel="noreferrer noopener"
             className={classes.card}
+            tabIndex={-1}
           >
             <Button size="small" color="primary" variant="contained">
               View Code

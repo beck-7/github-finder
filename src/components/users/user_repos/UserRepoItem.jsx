@@ -9,11 +9,14 @@ import {
 
 export const UserRepoItem = ({ userRepo }) => {
   const classes = useStyles();
+
+  const htmlUrl = userRepo.html_url;
+
   return (
     <Card className={classes.card}>
       <CardActions className={classes.cardActions}>
         <Link
-          href={userRepo.html_url}
+          href={htmlUrl}
           target="_blank"
           rel="noreferrer noopener"
           className={classes.link}

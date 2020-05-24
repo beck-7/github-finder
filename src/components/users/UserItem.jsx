@@ -13,17 +13,17 @@ import {
 export const UserItem = ({ user }) => {
   const classes = useStyles();
 
-  const { login, avatar_url } = user;
+  const { login, avatar_url: avatarUrl } = user;
 
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
-        <CardMedia image={avatar_url} className={classes.cardMedia} />
+        <CardMedia image={avatarUrl} className={classes.cardMedia} />
         <CardContent className={classes.cardContent}>
           <Typography variant="h5">{login}</Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
-          <Link to={`/user/${login}`} className={classes.card}>
+          <Link to={`/user/${login}`} className={classes.card} tabIndex={-1}>
             <Button size="small" color="primary" variant="contained">
               More
             </Button>
