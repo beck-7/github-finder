@@ -1,17 +1,17 @@
-Github Finder
+# Github Finder
 
-React app to search Github profiles and repositories. This app uses Redux for state management.
+> React app to search Github profiles and repositories. This app uses Redux for state management.
 
-Usage
+## Usage
 
-npm install
+### `npm install`
 
-npm start
+### `npm start`
 
-Runs the app in the development mode.
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000)
 
-Open http://localhost:3000
+### `npm run build`
 
-npm run build
+Builds the app for production to the `build` folder.<br>
 
-Builds the app for production to the build folder.
