@@ -25,7 +25,7 @@ export const SearchTabs = () => {
         <Tab label="Users" {...a11yProps(0)} />
         <Tab label="Repos" {...a11yProps(1)} />
       </Tabs>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={value} index={0} style={{ padding: 0 }}>
         <Users />
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -47,7 +47,7 @@ const TabPanel = (props) => {
       aria-labelledby={`scrollable-auto-tab-${index}`}
     >
       {value === index && (
-        <Box p={3}>
+        <Box>
           <Typography component={"span"}>{children}</Typography>
         </Box>
       )}

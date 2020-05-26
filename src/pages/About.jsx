@@ -1,11 +1,29 @@
 import React from "react";
-import { Container } from "@material-ui/core";
+import { Container, Typography, Link, Box } from "@material-ui/core";
 
 export const About = () => {
   return (
     <Container maxWidth="md">
-      <h1>About this App</h1>
-      <p>App to search Github users and repos</p>
+      <Typography variant="h4">
+        <Box fontWeight="fontWeightBold" mb={2}>
+          About
+        </Box>
+      </Typography>
+      <Typography variant="h6">
+        App to search Github profiles and repositories
+      </Typography>
+      <Typography variant="subtitle1">
+        Created by Berdibek Iskenderbekov
+      </Typography>
+      <Typography variant="subtitle1">
+        <Link
+          href="https://github.com/beck-7"
+          target="_blank"
+          rel="relnooper relnoreferrer"
+        >
+          Github
+        </Link>
+      </Typography>
     </Container>
   );
 };

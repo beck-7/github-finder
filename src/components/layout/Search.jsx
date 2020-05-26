@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Grid, TextField, Button, makeStyles } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
+
 import {
   searchUsers,
   searchRepos,
@@ -21,12 +22,14 @@ export const Search = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (text === "") {
-      return dispatch(setAlert("Please enter something"));
+    if (text === "") return dispatch(setAlert("Please enter something"));
+
+    if (text.match(/^[`!@#%^&*()+{}[\];:'"<>,.?/|\\\s]/)) {
+      return dispatch(setAlert("Invalid charachter"));
     }
+
     dispatch(searchUsers(text));
     dispatch(searchRepos(text));
-    setText("");
   };
 
   const onChange = (e) => setText(e.target.value);
@@ -34,6 +37,7 @@ export const Search = () => {
   const handleClear = () => {
     dispatch(clearUsers(text));
     dispatch(clearRepos(text));
+    setText("");
   };
 
   const classes = useStyles();
@@ -43,7 +47,7 @@ export const Search = () => {
       <Grid container spacing={1} alignItems="center">
         <Grid item xs={9} sm={11} lg={11} xl={11}>
           <TextField
-            label="Search..."
+            label="Search or jump to..."
             fullWidth={true}
             onChange={onChange}
             value={text}

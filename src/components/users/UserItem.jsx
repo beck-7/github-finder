@@ -16,28 +16,23 @@ export const UserItem = ({ user }) => {
   const { login, avatar_url: avatarUrl } = user;
 
   return (
-    <div className={classes.root}>
-      <Card className={classes.card}>
-        <CardMedia image={avatarUrl} className={classes.cardMedia} />
-        <CardContent className={classes.cardContent}>
-          <Typography variant="h5">{login}</Typography>
-        </CardContent>
-        <CardActions className={classes.cardActions}>
-          <Link to={`/user/${login}`} className={classes.card} tabIndex={-1}>
-            <Button size="small" color="primary" variant="contained">
-              More
-            </Button>
-          </Link>
-        </CardActions>
-      </Card>
-    </div>
+    <Card className={classes.card}>
+      <CardMedia image={avatarUrl} className={classes.cardMedia} />
+      <CardContent className={classes.cardContent}>
+        <Typography variant="h5">{login}</Typography>
+      </CardContent>
+      <CardActions className={classes.cardActions}>
+        <Link to={`/user/${login}`} className={classes.card} tabIndex={-1}>
+          <Button size="small" color="primary" variant="contained">
+            More
+          </Button>
+        </Link>
+      </CardActions>
+    </Card>
   );
 };
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(2),
-  },
+const useStyles = makeStyles(() => ({
   card: {
     margin: "0 auto",
     textAlign: "center",

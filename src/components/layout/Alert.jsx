@@ -21,6 +21,6 @@ export const Alert = () => {
 
 const useStyles = makeStyles(() => ({
   alert: {
-    marginTop: 30,
+    margin: "30px 0 15px 0",
   },
 }));

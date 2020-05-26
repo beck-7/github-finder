@@ -16,7 +16,7 @@ export const Repos = () => {
   if (loading) return <Spinner />;
 
   return (
-    <Grid container spacing={0} className={classes.grid}>
+    <Grid container spacing={4} className={classes.grid}>
       {repos.map((repo) => (
         <Grid item xs={12} sm={6} lg={6} xl={3} key={repo.id}>
           <RepoItem repo={repo} />
@@ -28,6 +28,7 @@ export const Repos = () => {
 
 const useStyles = makeStyles(() => ({
   grid: {
-    margin: "20px 0",
+    marginTop: 20,
+    marginBottom: 20,
   },
 }));

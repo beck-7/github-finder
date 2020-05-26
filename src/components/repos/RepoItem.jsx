@@ -21,35 +21,33 @@ export const RepoItem = ({ repo }) => {
   } = repo;
 
   return (
-    <div className={classes.root}>
-      <Card className={classes.card}>
-        <CardContent className={classes.cardContent}>
-          <Typography color="primary" variant="h5">
-            {fullName}
+    <Card className={classes.card}>
+      <CardContent className={classes.cardContent}>
+        <Typography color="primary" variant="h5">
+          {fullName}
+        </Typography>
+        <Typography variant="subtitle1">{language}</Typography>
+        {stargazersCount > 0 && (
+          <Typography variant="body2" className={classes.starsCount}>
+            {starsCount(stargazersCount)}
+            <StarRateIcon color="secondary" />
           </Typography>
-          <Typography variant="subtitle1">{language}</Typography>
-          {stargazersCount > 0 && (
-            <Typography variant="body2" className={classes.starsCount}>
-              {starsCount(stargazersCount)}
-              <StarRateIcon color="secondary" />
-            </Typography>
-          )}
-        </CardContent>
-        <CardActions className={classes.cardActions}>
-          <Link
-            href={htmlUrl}
-            target="_blank"
-            rel="noreferrer noopener"
-            className={classes.card}
-            tabIndex={-1}
-          >
-            <Button size="small" color="primary" variant="contained">
-              View Code
-            </Button>
-          </Link>
-        </CardActions>
-      </Card>
-    </div>
+        )}
+      </CardContent>
+      <CardActions className={classes.cardActions}>
+        <Link
+          href={htmlUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+          className={classes.card}
+          tabIndex={-1}
+        >
+          <Button size="small" color="primary" variant="contained">
+            View Code
+          </Button>
+        </Link>
+      </CardActions>
+    </Card>
   );
 };
 
@@ -61,10 +59,7 @@ const starsCount = (n) => {
   return n;
 };
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(2),
-  },
+const useStyles = makeStyles(() => ({
   card: {
     margin: "0 auto",
     textAlign: "center",

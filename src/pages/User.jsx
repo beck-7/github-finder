@@ -163,8 +163,8 @@ export const User = ({ match }) => {
         <Card className={classes.cardBadge}>
           <Chip label={`Followers: ${followers}`} color="secondary" />
           <Chip label={`Following: ${following}`} color="primary" />
-          <Chip label={`Public Repos: ${publicRepos}`} />
-          <Chip label={`Public Gists: ${publicGists}`} color="secondary" />
+          <Chip label={`Public Repos: ${publicRepos}`} color="secondary" />
+          <Chip label={`Public Gists: ${publicGists}`} />
         </Card>
         <UserRepos userRepos={userRepos} />
       </div>

@@ -16,7 +16,7 @@ export const Users = () => {
   if (loading) return <Spinner />;
 
   return (
-    <Grid container spacing={0} className={classes.grid}>
+    <Grid container spacing={4} className={classes.grid}>
       {users.map((user) => (
         <Grid item xs={12} sm={6} lg={4} xl={3} key={user.id}>
           <UserItem user={user} />
@@ -28,6 +28,7 @@ export const Users = () => {
 
 const useStyles = makeStyles(() => ({
   grid: {
-    margin: "20px 0",
+    marginTop: 20,
+    marginBottom: 20,
   },
 }));

@@ -8,12 +8,15 @@ import {
   SET_LOADING,
 } from "./types";
 
+const BASE_URL = "https://api.github.com";
+
 export const searchUsers = (text) => async (dispatch) => {
   dispatch(setLoading());
-  const res = await fetch(
-    `https://api.github.com/search/users?q=${text}&client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`
-  );
+
+  const res = await fetch(`${BASE_URL}/search/users?q=${text}`);
+
   const data = await res.json();
+
   dispatch({
     type: SEARCH_USERS,
     payload: data.items,
@@ -22,10 +25,11 @@ export const searchUsers = (text) => async (dispatch) => {
 
 export const searchRepos = (text) => async (dispatch) => {
   dispatch(setLoading());
-  const res = await fetch(
-    `https://api.github.com/search/repositories?q=${text}&client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`
-  );
+
+  const res = await fetch(`${BASE_URL}/search/repositories?q=${text}`);
+
   const data = await res.json();
+
   dispatch({
     type: SEARCH_REPOS,
     payload: data.items,
@@ -34,10 +38,11 @@ export const searchRepos = (text) => async (dispatch) => {
 
 export const getUser = (username) => async (dispatch) => {
   dispatch(setLoading());
-  const res = await fetch(
-    `https://api.github.com/users/${username}?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`
-  );
+
+  const res = await fetch(`${BASE_URL}/users/${username}`);
+
   const data = await res.json();
+
   dispatch({
     type: GET_USER,
     payload: data,
@@ -47,10 +52,10 @@ export const getUser = (username) => async (dispatch) => {
 export const getUserRepos = (username) => async (dispatch) => {
   dispatch(setLoading());
 
-  const res = await fetch(
-    `https://api.github.com/users/${username}/repos?per_page=&sort=created:asc&client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`
-  );
+  const res = await fetch(`${BASE_URL}/users/${username}/repos?&sort=created`);
+
   const data = await res.json();
+
   dispatch({
     type: GET_USER_REPOS,
     payload: data,
