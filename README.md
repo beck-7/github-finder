@@ -1,5 +1,4 @@
-Github Finder
-React app to search Github profiles and repositories. This app uses Redux for state management.
+# Github Finder
 
 Usage
 yarn install
