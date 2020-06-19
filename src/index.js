@@ -7,7 +7,7 @@ import { store } from "./store";
 
 const app = (
   <Provider store={store}>
-    <App />
+    <App/>
   </Provider>
 );
 
