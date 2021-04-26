@@ -2,14 +2,9 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Grid, TextField, Button, makeStyles } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-
-import {
-  searchUsers,
-  searchRepos,
-  clearUsers,
-  clearRepos,
-} from "../../actions/githubActions";
-import { setAlert } from "../../actions/alertActions";
+import { setAlert, removeAlert } from "../../redux/slices/alertSlice";
+import { clearUsers, clearRepos } from "../../redux/slices/githubSlice";
+import { searchUsers, searchRepos } from "../../redux/asyncThunks";
 
 export const Search = () => {
   const [text, setText] = useState("");
@@ -22,12 +17,19 @@ export const Search = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (text === "") return dispatch(setAlert("Please enter something"));
-
-    if (text.match(/^[`!@#%^&*()+{}[\];:'"<>,.?/|\\\s]/)) {
-      return dispatch(setAlert("Invalid charachter"));
+    if (text === "")  {
+      return(
+        dispatch(setAlert({msg: "Please enter something"})),
+        setTimeout(() => dispatch(removeAlert()), 3000)
+      );  
     }
 
+    if (text.match(/^[`!@#%^&*()+{}[\];:'"<>,.?/|\\\s]/)) {
+      return (
+        dispatch(setAlert({msg: "Invalid input"})),
+        setTimeout(() => dispatch(removeAlert()), 3000)
+      );
+    }
     dispatch(searchUsers(text));
     dispatch(searchRepos(text));
   };

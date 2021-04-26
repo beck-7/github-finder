@@ -10,7 +10,7 @@ import { User } from "./pages/User";
 import { About } from "./pages/About";
 import { NotFound } from "./pages/NotFound";
 
-import "./App.css";
+import "./global.css";
 
 const App = () => {
   return (

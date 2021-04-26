@@ -4,7 +4,7 @@
 
 ## Usage
 
-### `yarn install`
+### `yarn`
 
 ### `yarn start`
 

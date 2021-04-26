@@ -20,7 +20,7 @@ import {
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import CancelIcon from "@material-ui/icons/Cancel";
 
-import { getUser, getUserRepos } from "../actions/githubActions";
+import { getUser, getUserRepos } from "../redux/asyncThunks";
 import { Spinner } from "../components/layout/Spinner";
 import { UserRepos } from "../components/users/user_repos/UserRepos";
 
@@ -30,7 +30,7 @@ export const User = ({ match }) => {
   const [user, userRepos, loading] = useSelector((state) => [
     state.gh.user,
     state.gh.userRepos,
-    state.gh.loading,
+    state.gh.loading
   ]);
 
   const classes = useStyles();
