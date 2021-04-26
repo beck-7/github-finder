@@ -1,6 +1,6 @@
 # Github Finder
 
-> React app to search Github profiles and repositories. This app uses Redux for state management.
+> React app to search Github profiles and repositories. This app uses Redux Toolkit for state management.
 
 ## Usage
 
